@@ -9,6 +9,7 @@ public class testPCG
 		PokemonCardGame test = new PokemonCardGame();
 		
 			test.run(1000);
+			test.candyrun(1000);
 			
 		
 		

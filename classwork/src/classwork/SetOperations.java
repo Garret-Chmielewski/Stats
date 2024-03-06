@@ -9,8 +9,8 @@ public class SetOperations
 	/* Chapter 1 coding*/
 	
 	/**
-	 * 
-	 * @param userInput
+	 * finds the mean of an array of values
+	 * @param userInput array that user puts in
 	 * @return
 	 */
 	public double findMean(int[] userInput)
@@ -27,8 +27,8 @@ public class SetOperations
 		return result;
 	}
 	/**
-	 * 
-	 * @param userInput
+	 * finds the median of an array of values
+	 * @param userInput array that user puts in
 	 * @return
 	 */
 	public double findMedian(int[] userInput)
@@ -48,8 +48,8 @@ public class SetOperations
 		return middle;
 	}
 	/**
-	 * 
-	 * @param userInput
+	 * finds the mode of an array of values
+	 * @param userInput array user that user puts in
 	 * @return
 	 */
 	public double findMode(int[] userInput)
@@ -77,8 +77,8 @@ public class SetOperations
 		return most;
 	}
 	/**
-	 * 
-	 * @param userinput
+	 * finds the variance of an array of values
+	 * @param userinput array that user puts in
 	 * @return
 	 */
 	public double findVariance(int[]userinput)
@@ -101,8 +101,8 @@ public class SetOperations
 		return variance;
 	}
 	/**
-	 * 
-	 * @param userinput
+	 * finds the Standard deviation of an array of values
+	 * @param userinput array that user puts in
 	 * @return
 	 */
 	public double findStandardDiviation(int[]userinput)
@@ -116,8 +116,8 @@ public class SetOperations
 	/* Chapter 2 coding*/
 	
 	/**
-	 * 
-	 * @param n
+	 * finds the factorial of a value put into the function
+	 * @param n value that user inputs
 	 * @return
 	 */
 	public int factorial(int n) {
@@ -131,9 +131,9 @@ public class SetOperations
 	   }
 	
 	/**
-	 * 
-	 * @param n
-	 * @param r
+	 * find the permutations between two numbers 
+	 * @param n one integer that the user selected 
+	 * @param r another integer that the user selected 
 	 * @return
 	 */
 	public int permutaion(int n, int r)
@@ -142,9 +142,9 @@ public class SetOperations
 		return per;
 	}
 	/**
-	 * 
-	 * @param n
-	 * @param r
+	 * find the combinations between two numbers 
+	 * @param n one integer that the user selected 
+	 * @param r another integer that the user selected 
 	 * @return
 	 */
 	public int combination(int n, int r)
@@ -153,9 +153,9 @@ public class SetOperations
 		return com;
 	}
 	/**
-	 * 
-	 * @param sample
-	 * @param other
+	 * finds the intersections between 2 arrayLists 
+	 * @param sample one ArrayList that the user inputs
+	 * @param other another ArrayList that the user inputs
 	 * @return
 	 */
 	public ArrayList<String> intersection(ArrayList<String> sample, ArrayList<String> other)
@@ -178,9 +178,9 @@ public class SetOperations
 		
 	}
 	/**
-	 * 
-	 * @param sample
-	 * @param other
+	 * finds the union between 2 arrayLists 
+	 * @param sample one ArrayList that the user inputs
+	 * @param other another ArrayList that the user inputs
 	 * @return
 	 */
 	public ArrayList<String> union(ArrayList<String> sample, ArrayList<String> other)
@@ -203,9 +203,9 @@ public class SetOperations
 	}
 	
 	/**
-	 * 
-	 * @param sample
-	 * @param other
+	 * finds the complement between 2 arrayLists 
+	 * @param sample one ArrayList that the user inputs
+	 * @param other another ArrayList that the user inputs
 	 * @return
 	 */
 	public ArrayList<String> complement(ArrayList<String> sample, ArrayList<String> other)
@@ -231,12 +231,12 @@ public class SetOperations
 	}
 	
 	/**
-	 *
-	 * @param d
-	 * @param e
-	 * @param A_given_B
-	 * @param B_given_A
-	 * @param U
+	 * Determines if a statement is independent or not.
+	 * @param A probability of event A happening
+	 * @param B probability of event B happening
+	 * @param A_given_B probability of A happening given B
+	 * @param B_given_A probability of B happening given A
+	 * @param U the probability of the Union of A and B
 	 * @return
 	 */
 	public Boolean isIndependent(double A, double B, double A_given_B, double B_given_A, double U)
@@ -261,8 +261,8 @@ public class SetOperations
 	}
 	
 	/**
-	 * 
-	 * @param n
+	 * finds factorial using BigInteger class
+	 * @param n value the user inputs 
 	 * @return
 	 */
 	public BigInteger factor(BigInteger n)
@@ -287,11 +287,12 @@ public class SetOperations
 	}
 	
 	/* Chapter 3 coding*/
+	
 	/**
-	 * 
-	 * @param p
-	 * @param n
-	 * @param y
+	 * finds the binomial distribution probability 
+	 * @param p probability of success at a given event
+	 * @param t total number of trials
+	 * @param s the number of successful trials 
 	 * @return
 	 */
 	public double BinomialProb(double p, int t, int s )
@@ -301,4 +302,149 @@ public class SetOperations
 		
 	return result;
 	}
+	
+	/**
+	 * finds the expected value of a binomial distribution 
+	 * @param p probability of success
+	 * @param t total number of trials
+	 * @return
+	 */
+	public double findExpectedBio(double p, int t)
+	{
+		double expected = t * p;
+		return expected;
+	}
+	
+	/**
+	 * finds the Standard deviation value of a binomial distribution 
+	 * @param p probability of success
+	 * @param t total number of trials
+	 * @return
+	 */
+	public double findvarianceBio(double p, int t)
+	{
+		double variance= (t * p) * (1-p);
+		return variance;
+	}
+	/**
+	 * finds the Geometric distribution probability
+	 * @param p probability of success at a given event
+	 * @param t the total number of trials
+	 * @return
+	 */
+	public double GeoProb(double p, int t)
+	{
+		double q = 1-p;
+		double result = Math.pow(q,t-1)* p;
+		return result;
+		
+	}
+	
+	/**
+	 * finds the expected Geometric distribution
+	 * @param p probability of success
+	 * @return
+	 */
+	public double indExpectedGeo(double p)
+	{
+		double expected =1/p;
+		return expected;
+	}
+	
+	/**
+	 * finds the standard deviation Geometric distribution
+	 * @param p 
+	 * @return
+	 */
+	public double findvarianceGeo(double p)
+	{
+		double variance= (1-p)/Math.pow(p, 2);
+		return variance;
+	}
+	
+	/**
+	 * find the Hypergeometric distribution probability
+	 * @param N Total population for the event
+	 * @param r the values of interest for and event
+	 * @param n sample of the total population
+	 * @param y the number of the section we are interested in 
+	 * @return
+	 */
+	public double HypProb(int N, int r, int n, int y)
+	{
+		double top = combination(r,y) * combination(N-r,n-y);
+		double bottem =combination(N,n);
+		double result = top/bottem;
+		return result;
+	}
+	
+	/**
+	 * finds the expected value of Hypergeometric distribution
+	 * @param n sample of population
+	 * @param r the section we are interested in 
+	 * @param N The population for the event
+	 * @return
+	 */
+	public double findExpectedhyp(double n, double r, double N)
+	{
+		double expected = (n*r)/N;
+		return expected;
+	}
+	
+	/**
+	 * finds the Standard Deviation value of Hypergeometric distribution
+	 * @param n sample of population
+	 * @param r the section we are interested in 
+	 * @param N The population for the event
+	 * @return
+	 */
+	public double findvariancehyp(double n, double r, double N)
+	{
+		double first = r/N;
+		double second = (N-r)/N;
+		double third = (N-n)/(N-1);
+		double variance= first * second * third;
+		return variance;
+	}
+	
+	/**
+	 * finds the Negative Binomial Probability Distribution
+	 * @param y total number of trials
+	 * @param r number of successful trials
+	 * @param p probability of success
+	 * @return
+	 */
+	public double negativeBio(int y, int r, double p)
+	{
+		double q=1-p;
+		double total= combination(y-1,r-1)* Math.pow(p, r) * Math.pow(q, (y-r));
+		return total;
+	}
+	
+	/**
+	 * finds the expected Negative Binomial Probability 
+	 * @param r number of successful trials
+	 * @param p probability of success
+	 * @return
+	 */
+	public double findexpectedNegativeBio(int r,double p)
+	{
+		double expected =r/p;
+		return expected;
+	}
+	
+	/**
+	 * finds the Standard deviation Negative Binomial Probability 
+	 * @param r number of successful trials
+	 * @param p probability of success
+	 * @return
+	 */
+	public double findvarianceNegativeBio(double r, double p)
+	{
+		double num = r*(1-p);
+		double dem = Math.pow(p, 2);
+		double variance = num/dem;
+		return variance;
+	}
+
 }
