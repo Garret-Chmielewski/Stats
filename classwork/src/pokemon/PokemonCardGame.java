@@ -7,10 +7,16 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Collections;
 
+/**
+ * Mia helped with creating the rare candy methods
+ * @author Garret Chmielewski
+ *
+ */
 public class PokemonCardGame 
 {
 	private ArrayList<Card> deck; 
 	private ArrayList<Card> hand;
+	private ArrayList<Card> prize;
 	
 	/**
 	 * constructor that holds the decks and hands
@@ -19,14 +25,7 @@ public class PokemonCardGame
 	{
 		deck = new ArrayList<Card>();
 		hand = new ArrayList<Card>();
-		deck.add(new pokemon());
-		
-		int deckSize =60;
-		
-		for(int i=1; i < deckSize; i++)
-		{
-			deck.add(new energy());
-		}
+		prize = new ArrayList<Card>();
 	}
 	
 
@@ -170,15 +169,24 @@ public void alterCandyDeck(int candy)
 	
 	for(int z= 1; z <= 15;z++ )
 	{
-		deck.add(new rarecandy());
+		deck.add(new pokemon());
 	}
 	
-	deckSize = (deckSize - candy -30);
+	deckSize = deckSize - (candy - 30);
 	for(int z= 1; z <= deckSize;z++ )
 	{
 		deck.add(new trainer());
 	}
 }
+	/**
+	 * Mia helped me figure out how to help me implement prize pile
+	 */	
+	public void drawPrizePile() {
+    for(int i = 0; i < 6; i++) {
+        prize.add(drawCard());
+    }
+}
+
 
 
 // Mia helped with this method
@@ -240,9 +248,37 @@ public void run(double runamount)
 		}
 	}
 	
+	/**
+	 * Mia helped implement method
+	 * @return state of opening hand
+	 */
+	public boolean evaluateOpeningHand() {
+        for(int i = 0; i < hand.size(); i++) {
+            Card currentCard = hand.get(i);
+            if(currentCard instanceof rarecandy) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Mia helped implement method
+     * @return 
+     */
+    public boolean evaluatePrizePile() {
+        for(int i = 0; i < prize.size(); i++) {
+            Card currentCard = prize.get(i);
+            if(currentCard instanceof rarecandy) {
+                return true;
+            }
+        }
+        return false;
+    }
+	
 /**
- * runs monte carlo for rare candies
- * @param runamount
+ * runs monte carlo for rare candies, Mia helped edit my origonal code to work
+ * @param runamount how many times the test is done
  */
 	public void candyrun(double runamount)
 	{
@@ -250,24 +286,76 @@ public void run(double runamount)
 		
 		for(int w =1; w <= 4; w++)
 		{
-			double totalcount=0;
-			for(int i=0;i < runamount; i++)
+			double candy=0;
+			for(int j = 0; j < runamount; j++) 
 			{
-				alterCandyDeck(w);
-				drawHand();
-					if(evaluateHand()==true)
-					{
-						totalcount++;
-					}
-						
-			}
-			System.out.println("percent of nonplayable hands with " + w +" rare Candy is " + (totalcount/runamount));
+				PokemonCardGame candyDeck = new PokemonCardGame();
+                candyDeck.alterCandyDeck(w);
+                openingHand(candyDeck);
+                if(!isCandyBricked(candyDeck)) 
+                {
+                    candy++;
+                }
+                
+              
+            }
 			
-			
-		}
+			System.out.println("number of candies: " + w + ", Number of prize piles with all candies: " + (candy) +
+                    ", percentage of prize piles with all candies: " +
+                    ((candy / runamount) * 100) + "%");
+            System.out.println("Percent chance of not getting a bricked deck: "
+                    + (100 - ((candy / runamount) * 100)) + "%" + "\n");
+            
+        }
+    }
+		/**
+		 * Mia helped implement method
+		 * @param candyDeck
+		 */
+		public void openingHand(PokemonCardGame candyDeck) 
+		{
+	        candyDeck.drawHand();
+	        boolean isReady = false;
+	        while (!isReady) 
+	        {
+	            if (!candyDeck.evaluateOpeningHand()) 
+	            {
+	                candyDeck.restartOpeningHand();
+	                candyDeck.drawHand();
+	            } else 
+	            {
+	                isReady = true;
+	            }
+	        }
+	        candyDeck.drawPrizePile();
+	    }
+		
+		/**
+		 * Mia helped implement method
+		 */
+		public void restartOpeningHand() 
+		{
+	        deck.addAll(hand);
+	        hand.clear();
+	        Collections.shuffle(deck);
+	    }
+		
+		/**
+		 * Mia helped implement method
+		 * @param candyDeck
+		 * @return
+		 */
+		private boolean isCandyBricked(PokemonCardGame candyDeck) {
+	        for (int i = 0; i < candyDeck.prize.size(); i++) {
+	            if (candyDeck.prize.get(i) instanceof rarecandy) {
+	                return false;
+	            }
+	        } return true;
+	    }	
 		
 		
 }
 
-}
+
+
 
